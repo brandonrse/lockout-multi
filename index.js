@@ -201,7 +201,7 @@ function mergeJSONs(jsonArray) {
     for (const [gameName, initials] of gameInitialMap.entries()) {
       const val = baseValue + (i < remainder ? 1 : 0);
       merged.limits.board[initials] = val;
-      merged.limits.line[initials] = val;
+      merged.limits.line[initials] = 50;
       summary.push({ gameName, initials, percent: val });
       i++;
     }
