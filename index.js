@@ -75,11 +75,16 @@ function setError(msg) {
 }
 
 function makeInitials(gameName) {
-  if (!gameName) { 
+  if (!gameName) {
     return 'UNK';
   }
-  const abbr = (gameName.match(/[A-Z]/g) || []).join('');
-  return abbr ? abbr.toLowerCase() : gameName.replace(/\s+/g, '').slice(0, 4).toLowerCase();
+
+  const abbr = gameName
+    .split(/\s+/)
+    .map(word => word[0])
+    .join('');
+
+  return abbr.toLowerCase();
 }
 
 function uniqueKey(existing, base) {
@@ -143,11 +148,19 @@ function mergeJSONs(jsonArray) {
           obj.line_categories.push(uniqueInitials);
         }
 
+        const gameInitial = makeInitials(gameName);
         if (typeof obj.tooltip === 'string' && obj.tooltip.trim()) {
-          const needsSpace = /[.!?]$/.test(obj.tooltip.trim()) ? ' ' : '';
-          obj.tooltip = `${obj.tooltip.trim()}${needsSpace}(${gameName})`;
+          const trimmedTooltip = obj.tooltip.trim();
+          const needsSpace = /[.!?]$/.test(trimmedTooltip) ? ' ' : '';
+          const addition = `${needsSpace}(${gameInitial})`;
+
+          if ((trimmedTooltip + addition).length <= 120) {
+            obj.tooltip = trimmedTooltip + addition;
+          } else {
+            obj.tooltip = trimmedTooltip;
+          }
         } else {
-          obj.tooltip = `(${gameName})`;
+          obj.tooltip = `(${gameInitial})`;
         }
 
         merged.objectives.push(obj);
