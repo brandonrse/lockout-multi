@@ -106,6 +106,9 @@ p.lead {
 }
 
 .btn.ghost {
+  display: inline-block;
+  padding: 6px 10px;
+  margin-left: 6px;
   color: var(--muted);
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.02)
@@ -156,6 +159,12 @@ p.lead {
   font-size: 12px
 }
 
+.file-div {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
 
 .footer {
   margin-top: 18px;
