@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lockout Merger</title>
+  <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <div>
+        <h1>Multi Game Maker</h1>
+        <p class="lead">Select or drop multiple <code>.json</code> files.</p>
+      </div>
+      <div style="text-align:right">
+        <small style="color:var(--muted)">Built for quick creation • No files are uploaded to a server</small>
+      </div>
+    </header>
+
+
+    <section class="uploader" aria-label="JSON uploader">
+      <div>
+        <div id="dropzone" class="dropzone" tabindex="0">
+          <svg width="56" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M16 16l-4-4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path d="M12 3v13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            </path>
+          </svg>
+          <strong>Drop JSON files here</strong>
+          <small>or click <button id="chooseBtn" class="btn ghost"
+              style="display:inline-block;padding:6px 10px;margin-left:6px">Choose files</button></small>
+        </div>
+
+
+        <div style="display:flex;gap:10px;margin-top:10px;justify-content:center">
+          <input id="fileInput" type="file" accept="application/json,.json" multiple style="display:none" />
+          <button id="clearBtn" class="btn ghost">Clear list</button>
+          <button id="logRawBtn" class="btn">Console Log Raw</button>
+        </div>
+
+
+        <div id="errors" class="errors" aria-live="polite"></div>
+      </div>
+
+
+      <aside class="sidebar">
+        <div class="list" id="fileList" aria-label="Selected files (0)">
+          <p style="color:var(--muted);font-size:13px;margin:0">No files selected</p>
+        </div>
+      </aside>
+    </section>
+
+
+    <div class="footer">
+      <div>Ready</div>
+    </div>
+  </div>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>
